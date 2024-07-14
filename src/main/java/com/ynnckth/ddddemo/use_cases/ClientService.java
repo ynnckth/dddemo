@@ -1,10 +1,11 @@
-package com.ynnckth.ddddemo.uc;
+package com.ynnckth.ddddemo.use_cases;
 
-import com.ynnckth.ddddemo.adapter.clients.ClientsRepository;
-import com.ynnckth.ddddemo.adapter.exchange_rates.ExchangeRatesRepository;
 import com.ynnckth.ddddemo.domain.Client;
 import com.ynnckth.ddddemo.domain.Currency;
 import com.ynnckth.ddddemo.domain.ExchangeRate;
+import com.ynnckth.ddddemo.use_cases.ports.ClientsRepository;
+import com.ynnckth.ddddemo.use_cases.ports.ExchangeRatesRepository;
+import com.ynnckth.ddddemo.use_cases.ports.GetClientsUseCase;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package com.ynnckth.ddddemo.adapter.clients;
+package com.ynnckth.ddddemo.use_cases.ports;
 
 import com.ynnckth.ddddemo.domain.Client;
 
