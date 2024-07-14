@@ -14,7 +14,6 @@ public class ArchitectureTests {
     private static final String BASE_PACKAGE = "com.ynnckth.ddddemo";
     private static final String CORE_PACKAGE = "..core..";
     private static final String CORE_DOMAIN_PACKAGE = "..core.domain..";
-    private static final String CORE_APPLICATION_PACKAGE = "..core.application..";
 
     @Test
     void implementsOnionArchitecture() {
@@ -23,7 +22,7 @@ public class ArchitectureTests {
         ArchRule rule = onionArchitecture()
                 .domainModels(CORE_DOMAIN_PACKAGE)
                 .domainServices(CORE_PACKAGE)
-                .applicationServices(CORE_APPLICATION_PACKAGE)
+                .applicationServices(CORE_PACKAGE)
                 .adapter("controller", "..adapter.controller..")
                 .adapter("clients", "..adapter.clients..")
                 .adapter("exchange_rates", "..adapter.exchange_rates..");
@@ -42,7 +41,7 @@ public class ArchitectureTests {
                 .resideInAPackage(CORE_DOMAIN_PACKAGE)
                 .should()
                 .dependOnClassesThat()
-                .resideOutsideOfPackages(CORE_DOMAIN_PACKAGE,
+                .resideOutsideOfPackages(CORE_PACKAGE,
                         "java..",
                         "lombok..",
                         "org.springframework.lang" //exception for nullable annotation
