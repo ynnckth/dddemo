@@ -1,5 +1,7 @@
 package com.ynnckth.ddddemo.core.domain;
 
+import com.ynnckth.ddddemo.core.application.exception.MissingExchangeRateException;
+import com.ynnckth.ddddemo.core.domain.exception.WrongBaseCurrencyException;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -28,7 +30,7 @@ class AmountTest {
         Amount originalAmount = new Amount(BigDecimal.valueOf(100_000), new Currency("CHF"));
         ExchangeRate fxRate = new ExchangeRate(new Currency("SGD"), new Currency("CHF"), BigDecimal.valueOf(0.5), LocalDate.now());
 
-        assertThrows(IllegalArgumentException.class, () -> originalAmount.convert(fxRate));
+        assertThrows(WrongBaseCurrencyException.class, () -> originalAmount.convert(fxRate));
     }
 
     @Test
@@ -61,7 +63,7 @@ class AmountTest {
         Amount originalAmount = new Amount(BigDecimal.valueOf(100_000), new Currency("CHF"));
         List<ExchangeRate> rates = emptyList();
 
-        assertThrows(IllegalStateException.class, () -> originalAmount.findApplicableExchangeRateAndConvert(rates));
+        assertThrows(MissingExchangeRateException.class, () -> originalAmount.findApplicableExchangeRateAndConvert(rates));
     }
 
 }

@@ -1,5 +1,8 @@
 package com.ynnckth.ddddemo.core.domain;
 
+import com.ynnckth.ddddemo.core.application.exception.MissingExchangeRateException;
+import com.ynnckth.ddddemo.core.domain.exception.WrongBaseCurrencyException;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -10,7 +13,7 @@ public record Amount(BigDecimal value, Currency currency) {
 
     Amount convert(ExchangeRate exchangeRate) {
         if (!exchangeRate.baseCurrency().equals(currency)) {
-            throw new IllegalArgumentException("Base currency doesn't match");
+            throw new WrongBaseCurrencyException("Base currency doesn't match");
         }
         if (exchangeRate.targetCurrency().equals(currency)) {
             return this;
@@ -29,6 +32,6 @@ public record Amount(BigDecimal value, Currency currency) {
         return exchangeRates.stream()
                 .filter(fxRate -> fxRate.baseCurrency().equals(currency))
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException(String.format("Exchange rate for currency %s not found", currency())));
+                .orElseThrow(() -> new MissingExchangeRateException(String.format("Exchange rate for currency %s not found", currency())));
     }
 }
