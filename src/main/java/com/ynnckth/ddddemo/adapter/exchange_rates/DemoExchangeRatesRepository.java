@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class DemoExchangeRatesRepository implements ExchangeRatesRepository {
     @Override
     public ExchangeRate getExchangeRate(Currency baseCurrency, Currency targetCurrency, LocalDate date) {
-        // TODO: implement
+        // TODO: implement e.g. using this free API: https://www.exchangerate-api.com/docs/free
         return null;
     }
 }

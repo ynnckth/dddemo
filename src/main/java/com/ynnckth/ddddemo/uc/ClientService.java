@@ -32,6 +32,7 @@ public class ClientService implements GetClientsUseCase {
         return clients;
     }
 
+    // TODO: should this be move into a separate UC?
     private List<ExchangeRate> getRequiredExchangeRates(Currency targetCurrency, LocalDate exchangeRateDate, List<Client> clients) {
         List<Currency> usedCurrencies = clients.stream()
                 .flatMap(client -> client.getAllDistinctUsedCurrencies().stream())
