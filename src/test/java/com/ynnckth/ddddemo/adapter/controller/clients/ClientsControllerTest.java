@@ -3,7 +3,7 @@ package com.ynnckth.ddddemo.adapter.controller.clients;
 import com.ynnckth.ddddemo.core.domain.Amount;
 import com.ynnckth.ddddemo.core.domain.Client;
 import com.ynnckth.ddddemo.core.domain.Currency;
-import com.ynnckth.ddddemo.core.application.use_cases.ClientService;
+import com.ynnckth.ddddemo.core.application.use_cases.GetClientsUseCase;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -20,15 +20,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class ClientsControllerTest {
 
-    private final ClientService clientService = mock(ClientService.class);
+    private final GetClientsUseCase getClientsUseCase = mock(GetClientsUseCase.class);
 
     private final MockMvc mockMvc = MockMvcBuilders
-            .standaloneSetup(new ClientsController(clientService))
+            .standaloneSetup(new ClientsController(getClientsUseCase))
             .build();
 
     @Test
     void getClients_clientsReturned() throws Exception {
-        when(clientService.getClients(new Currency("SGD"), LocalDate.parse("2024-07-01")))
+        when(getClientsUseCase.invoke(new Currency("SGD"), LocalDate.parse("2024-07-01")))
                 .thenReturn(List.of(new Client("0001", "Alice",
                                 new Amount(BigDecimal.valueOf(1_000), new Currency("SGD")),
                                 new Amount(BigDecimal.valueOf(2_000), new Currency("SGD")))));

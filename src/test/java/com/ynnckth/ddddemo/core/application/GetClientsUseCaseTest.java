@@ -1,6 +1,6 @@
 package com.ynnckth.ddddemo.core.application;
 
-import com.ynnckth.ddddemo.core.application.use_cases.ClientService;
+import com.ynnckth.ddddemo.core.application.use_cases.GetClientsUseCase;
 import com.ynnckth.ddddemo.core.application.outbound_ports.ClientsRepository;
 import com.ynnckth.ddddemo.core.application.outbound_ports.ExchangeRatesRepository;
 import com.ynnckth.ddddemo.core.domain.Amount;
@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class ClientServiceTest {
+class GetClientsUseCaseTest {
 
     @Mock
     ExchangeRatesRepository exchangeRatesRepository;
@@ -30,7 +30,7 @@ class ClientServiceTest {
     ClientsRepository clientsRepository;
 
     @InjectMocks
-    private ClientService clientService;
+    private GetClientsUseCase getClientsUseCase;
 
     @Test
     void givenClientWithKeyFiguresInDifferentBaseCurrencies_whenGetClients_returnsSameClientsWithConvertedKeyFigures() {
@@ -46,7 +46,7 @@ class ClientServiceTest {
                 .thenReturn(new ExchangeRate(new Currency("EUR"), new Currency("SGD"), BigDecimal.valueOf(0.5), today));
 
 
-        List<Client> clientsWithConvertedKeyFigures = clientService.getClients(new Currency("SGD"), today);
+        List<Client> clientsWithConvertedKeyFigures = getClientsUseCase.invoke(new Currency("SGD"), today);
 
         assertThat(clientsWithConvertedKeyFigures).hasSize(1);
         assertThat(clientsWithConvertedKeyFigures.getFirst().getAssetsUnderManagement()).isEqualTo(new Amount(BigDecimal.valueOf(5_000.0), new Currency("SGD")));
