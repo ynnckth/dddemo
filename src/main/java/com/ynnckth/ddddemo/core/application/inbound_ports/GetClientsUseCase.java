@@ -1,7 +1,7 @@
-package com.ynnckth.ddddemo.use_cases.ports;
+package com.ynnckth.ddddemo.core.application.inbound_ports;
 
-import com.ynnckth.ddddemo.domain.Client;
-import com.ynnckth.ddddemo.domain.Currency;
+import com.ynnckth.ddddemo.core.domain.Client;
+import com.ynnckth.ddddemo.core.domain.Currency;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.ynnckth.ddddemo.domain;
+package com.ynnckth.ddddemo.core.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

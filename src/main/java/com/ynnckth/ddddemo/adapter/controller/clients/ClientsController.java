@@ -1,8 +1,8 @@
 package com.ynnckth.ddddemo.adapter.controller.clients;
 
-import com.ynnckth.ddddemo.domain.Client;
-import com.ynnckth.ddddemo.domain.Currency;
-import com.ynnckth.ddddemo.use_cases.ports.GetClientsUseCase;
+import com.ynnckth.ddddemo.core.domain.Client;
+import com.ynnckth.ddddemo.core.domain.Currency;
+import com.ynnckth.ddddemo.core.application.inbound_ports.GetClientsUseCase;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

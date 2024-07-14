@@ -12,17 +12,18 @@ import static com.tngtech.archunit.library.Architectures.onionArchitecture;
 public class ArchitectureTests {
 
     private static final String BASE_PACKAGE = "com.ynnckth.ddddemo";
-    private static final String DOMAIN_PACKAGE = "..domain..";
-    private static final String USE_CASE_PACKAGE = "..use_cases..";
+    private static final String CORE_PACKAGE = "..core..";
+    private static final String CORE_DOMAIN_PACKAGE = "..core.domain..";
+    private static final String CORE_APPLICATION_PACKAGE = "..core.application..";
 
     @Test
     void implementsOnionArchitecture() {
         JavaClasses importedClasses = new ClassFileImporter().importPackages(BASE_PACKAGE);
 
         ArchRule rule = onionArchitecture()
-                .domainModels(DOMAIN_PACKAGE)
-                .domainServices(DOMAIN_PACKAGE)
-                .applicationServices(USE_CASE_PACKAGE)
+                .domainModels(CORE_DOMAIN_PACKAGE)
+                .domainServices(CORE_PACKAGE)
+                .applicationServices(CORE_APPLICATION_PACKAGE)
                 .adapter("controller", "..adapter.controller..")
                 .adapter("clients", "..adapter.clients..")
                 .adapter("exchange_rates", "..adapter.exchange_rates..");
@@ -38,10 +39,10 @@ public class ArchitectureTests {
 
         ArchRule rule = noClasses()
                 .that()
-                .resideInAPackage(DOMAIN_PACKAGE)
+                .resideInAPackage(CORE_DOMAIN_PACKAGE)
                 .should()
                 .dependOnClassesThat()
-                .resideOutsideOfPackages(DOMAIN_PACKAGE,
+                .resideOutsideOfPackages(CORE_DOMAIN_PACKAGE,
                         "java..",
                         "lombok..",
                         "org.springframework.lang" //exception for nullable annotation

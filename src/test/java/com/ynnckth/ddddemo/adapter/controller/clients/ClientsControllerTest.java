@@ -1,9 +1,9 @@
 package com.ynnckth.ddddemo.adapter.controller.clients;
 
-import com.ynnckth.ddddemo.domain.Amount;
-import com.ynnckth.ddddemo.domain.Client;
-import com.ynnckth.ddddemo.domain.Currency;
-import com.ynnckth.ddddemo.use_cases.ClientService;
+import com.ynnckth.ddddemo.core.domain.Amount;
+import com.ynnckth.ddddemo.core.domain.Client;
+import com.ynnckth.ddddemo.core.domain.Currency;
+import com.ynnckth.ddddemo.core.application.use_cases.ClientService;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;

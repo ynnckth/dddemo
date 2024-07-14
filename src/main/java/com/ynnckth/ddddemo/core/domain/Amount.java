@@ -1,4 +1,4 @@
-package com.ynnckth.ddddemo.domain;
+package com.ynnckth.ddddemo.core.domain;
 
 import java.math.BigDecimal;
 import java.util.List;

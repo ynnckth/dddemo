@@ -1,6 +1,6 @@
 package com.ynnckth.ddddemo.adapter.controller.clients;
 
-import com.ynnckth.ddddemo.domain.Client;
+import com.ynnckth.ddddemo.core.domain.Client;
 
 public class ClientMapper {
 

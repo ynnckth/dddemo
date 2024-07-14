@@ -1,11 +1,12 @@
-package com.ynnckth.ddddemo.use_cases;
+package com.ynnckth.ddddemo.core.application;
 
-import com.ynnckth.ddddemo.use_cases.ports.ClientsRepository;
-import com.ynnckth.ddddemo.use_cases.ports.ExchangeRatesRepository;
-import com.ynnckth.ddddemo.domain.Amount;
-import com.ynnckth.ddddemo.domain.Client;
-import com.ynnckth.ddddemo.domain.Currency;
-import com.ynnckth.ddddemo.domain.ExchangeRate;
+import com.ynnckth.ddddemo.core.application.use_cases.ClientService;
+import com.ynnckth.ddddemo.core.application.outbound_ports.ClientsRepository;
+import com.ynnckth.ddddemo.core.application.outbound_ports.ExchangeRatesRepository;
+import com.ynnckth.ddddemo.core.domain.Amount;
+import com.ynnckth.ddddemo.core.domain.Client;
+import com.ynnckth.ddddemo.core.domain.Currency;
+import com.ynnckth.ddddemo.core.domain.ExchangeRate;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
